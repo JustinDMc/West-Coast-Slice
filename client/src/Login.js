@@ -17,12 +17,13 @@ export default function Login() {
                 <br></br>
                 <NavLink
                 to="/signup"
-                exact
                 >Sign Up
                 </NavLink>
                 <br></br>
                 <br></br>
-                <button>Login</button>
+                <button>
+                    <NavLink to="/home">Login</NavLink>
+                </button>
             </form>
         </div>
     )
