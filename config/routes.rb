@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # Leave this here to help deploy your app later!
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
-  resource :customers
-  resource :orders
-  resource :pizzas
-  resource :toppings
+  resources :customers
+  resources :orders
+  resources :pizzas
+  # get "/pizzas", to: "pizzas#index"
+  resources :toppings
 end
