@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :pizzas
-  # get "/pizzas", to: "pizzas#index"
   resources :toppings
 end
