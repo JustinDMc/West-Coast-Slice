@@ -1,9 +1,10 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import { Route, Switch } from "react-router-dom"
 import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
-import { Route, Switch } from "react-router-dom"
+import NavBar from './NavBar'
 
 function App() {
   const [pizzaCollection, setPizzaCollection] = useState([]);
@@ -19,13 +20,14 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path ="/">
+        <Route exact path ="/login">
           <Login setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/signup">
           <Signup setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/home">
+          <NavBar />
           <Home currentUser={currentUser}/>
         </Route>
       </Switch>

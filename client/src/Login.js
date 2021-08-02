@@ -22,7 +22,6 @@ export default function Login({setCurrentUser}) {
             body: JSON.stringify({customer})
         });
         const customerData = await res.json();
-        debugger
         if(customerData.id) {
             setCurrentUser(customerData)
             history.push("/home")
