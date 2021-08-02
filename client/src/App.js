@@ -5,6 +5,8 @@ import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
 import NavBar from './NavBar'
+import About from './About'
+import Orders from './Orders'
 
 function App() {
   const [pizzaCollection, setPizzaCollection] = useState([]);
@@ -33,7 +35,12 @@ function App() {
           <Home currentUser={currentUser}/>
         </Route>
         <Route exact path ="/about">
-          <About currentUser={currentUser}/>
+          <NavBar />
+          <About />
+        </Route>
+        <Route exact path ="/orders">
+          <NavBar />
+          <Orders />
         </Route>
       </Switch>
     </div>
