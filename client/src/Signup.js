@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import { NavLink } from 'react-router-dom';
 
-export default function Signup() {
+const Signup = ( {setCurrentUser } ) => {
+    const history = useHistory();
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [home_address, setHomeAddress] = useState("");
     const [errors, setErrors] = useState(null);
 
-    const history = useHistory();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -25,8 +25,9 @@ export default function Signup() {
             body: JSON.stringify({customer})
         });
         const customerData = await res.json();
-        if(res.ok){
-            history.push('/');
+        if(res.okay){
+            setCurrentUser(customerData)
+            history.push("/home")
         } else {
             setErrors(customerData.message)
         }
@@ -67,3 +68,5 @@ export default function Signup() {
         </div>
     )
 }
+
+export default Signup;

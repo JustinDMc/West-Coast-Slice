@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router-dom"
 
 function App() {
   const [pizzaCollection, setPizzaCollection] = useState([]);
+  const [currentUser, setCurrentUser] = useState([]);
 
   useEffect(() => {
     fetch(`/pizzas`)
@@ -19,13 +20,13 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path ="/">
-          <Login />
+          <Login setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/signup">
-          <Signup />
+          <Signup setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/home">
-          <Home />
+          <Home currentUser={currentUser}/>
         </Route>
       </Switch>
     </div>

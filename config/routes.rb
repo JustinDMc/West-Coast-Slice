@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :orders
   resources :pizzas
   resources :toppings
+  resources :logins, only: [:create]
 end

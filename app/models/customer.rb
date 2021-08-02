@@ -4,7 +4,7 @@ class Customer < ApplicationRecord
 
     has_secure_password
     
-    validates :username, :password, presence: {message: "Must be present"}
+    validates :username, presence: {message: "must be present"}
     validates :username, uniqueness: true
 
 

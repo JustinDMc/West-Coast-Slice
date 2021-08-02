@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function Home() {
+export default function Home( {currentUser} ) {
+
+    console.log(currentUser)
+
     return (
         <div>
-            <h1>Welcome home lol Hi Allen lol almost nap time</h1>
+            <h1>Welcome {currentUser.username}</h1>
         </div>
     )
 }
