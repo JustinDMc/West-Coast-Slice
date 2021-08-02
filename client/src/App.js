@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './Login'
 import Signup from './Signup'
 import Home from './Home'
+import About from './About'
 import { Route, Switch } from "react-router-dom"
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path ="/home">
           <Home currentUser={currentUser}/>
+        </Route>
+        <Route exact path ="/about">
+          <About currentUser={currentUser}/>
         </Route>
       </Switch>
     </div>
