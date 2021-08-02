@@ -49,7 +49,7 @@ puts "Seeding Toppings..."
 topping1 = Topping.create(name: "Italian Sausage")
 topping2 = Topping.create(name: "Bacon")
 topping3 = Topping.create(name: "Pepperoni")
-topping4 = Topping.create(name: "Ground beef")
+topping4 = Topping.create(name: "Ground Beef")
 topping5 = Topping.create(name: "Ham")
 topping6 = Topping.create(name: "Black Olives")
 topping7 = Topping.create(name: "Broccoli")
