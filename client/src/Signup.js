@@ -25,7 +25,7 @@ const Signup = ( {setCurrentUser } ) => {
             body: JSON.stringify({customer})
         });
         const customerData = await res.json();
-        if(res.okay){
+        if(res.ok){
             setCurrentUser(customerData)
             history.push("/home")
         } else {
@@ -45,6 +45,7 @@ const Signup = ( {setCurrentUser } ) => {
                     onChange={(e) => setUserName(e.target.value)}>
                 </input>
                 <br></br>
+                <br></br>
                 <input 
                     type="password" 
                     placeholder="Password"
@@ -52,6 +53,7 @@ const Signup = ( {setCurrentUser } ) => {
                     value={password} 
                     onChange={(e) => setPassword(e.target.value)}>
                 </input>
+                <br></br>
                 <br></br>
                 <input 
                     type="text" 
@@ -62,7 +64,7 @@ const Signup = ( {setCurrentUser } ) => {
                 </input>
                 <br></br>
                 <br></br>
-                <input submit type="submit" value="Sign Up"></input>
+                <input submit type="submit" value="Sign Up" style={{color: "black", backgroundColor: "cyan"}}></input>
                 {errors?errors.map(error => <div>{error}</div>):null}
             </form>
         </div>

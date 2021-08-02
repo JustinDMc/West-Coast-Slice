@@ -22,7 +22,8 @@ export default function Login({setCurrentUser}) {
             body: JSON.stringify({customer})
         });
         const customerData = await res.json();
-        if(customerData.id){
+        debugger
+        if(customerData.id) {
             setCurrentUser(customerData)
             history.push("/home")
         } else {
@@ -34,17 +35,30 @@ export default function Login({setCurrentUser}) {
     return (
         <div style={{textAlign: "center", margin: "auto"}}>
             <form onSubmit={handleSubmit} style={{backgroundColor: "white", border: '1px solid black', borderRadius: "8px", padding: "8px", width: "300px", margin: "auto"}}>
-                <h1>Welcome to West Coast Slice!</h1>
+                <h1 style={{color: "orange"}}>West Coast Slice!</h1>
                 <h2>Login</h2>
-                <input type="text" placeholder="Username"></input>
+                <input 
+                    type="text" 
+                    placeholder="Username"
+                    name="username" 
+                    value={username} 
+                    onChange={(e) => setUserName(e.target.value)}>
+                </input>
                 <br></br>
-                <input type="password" placeholder="Password"></input>
+                <br></br>
+                <input 
+                    type="password" 
+                    placeholder="Password"
+                    name="password"
+                    value={password} 
+                    onChange={(e) => setPassword(e.target.value)}>
+                </input>
                 <br></br>
                 <NavLink to="/signup">Sign Up</NavLink>
                 <br></br>
                 <br></br>
-                <input submit type="submit" value="Log In"></input>
-                {errors?errors.map(error => <div>{error}</div>):null}
+                <input submit type="submit" value="Log In" style={{color: "black", backgroundColor: "lightgreen"}}></input>
+                <div>{errors}</div>
             </form>
         </div>
     )
