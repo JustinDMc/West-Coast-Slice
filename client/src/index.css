@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.userOrder {
+  text-align: left;
+  border: 5px solid black;
+  max-height: 100px;
+  max-height: 300px;
+  padding: 100px;
+  padding-top: 10px;
+  padding-bottom: 300px;
+  margin-left: 75px;
+  margin-right: 75px;
+  
+}
+/* style = {{border: "5px solid black", maxLength: "100px", maxHeight: "300px",  padding: "6px", borderRadius: "8px"}} */

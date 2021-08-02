@@ -3,7 +3,7 @@ import React from 'react'
 export default function Home( {currentUser, pizzaCollection} ) {
 
     return (
-        <div style={{display: "table"}} className="home-screen-div">
+        <div  className="home-screen-div">
             <div className="pizzaContainer">
                 <h1>Welcome {currentUser.username}, we are on the home page.</h1>
                 {pizzaCollection.map(pizza => 
