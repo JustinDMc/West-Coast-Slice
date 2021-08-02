@@ -32,6 +32,9 @@ function App() {
           <NavBar />
           <Home currentUser={currentUser}/>
         </Route>
+        <Route exact path ="/about">
+          <About currentUser={currentUser}/>
+        </Route>
       </Switch>
     </div>
   );
