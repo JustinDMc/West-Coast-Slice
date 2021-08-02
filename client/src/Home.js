@@ -10,6 +10,8 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <img src={pizza.img_url} style={{maxLength: "100px", maxHeight: "100px"}}/>
                     <h2>{pizza.name}</h2>
                     <h3>${pizza.price}</h3>
+                    <h3>{pizza.toppings.map(topping => topping.name + " ")}</h3>
+
                     <button>Order</button>
                 </div>
                 )}

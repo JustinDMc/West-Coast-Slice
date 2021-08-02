@@ -2,7 +2,7 @@ class PizzasController < ApplicationController
 
     def index 
         pizzas = Pizza.all 
-        render json: pizzas, only: [:id, :img_url, :name, :size, :price]
+        render json: pizzas, only: [:id, :img_url, :name, :size, :price], include: [:toppings]
     end
 
     # def show  
