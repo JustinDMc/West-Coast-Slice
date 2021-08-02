@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     fetch(`/pizzas`)
     .then(res => res.json())
-    .then(pizzaData => console.log(pizzaData))
+    .then(pizzaData => setPizzaCollection(pizzaData))
   }, [])
 
 
@@ -32,7 +32,7 @@ function App() {
         </Route>
         <Route exact path ="/home">
           <NavBar />
-          <Home currentUser={currentUser}/>
+          <Home currentUser={currentUser} pizzaCollection={pizzaCollection}/>
         </Route>
         <Route exact path ="/about">
           <NavBar />
