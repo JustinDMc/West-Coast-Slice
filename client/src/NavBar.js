@@ -4,8 +4,21 @@ import {NavLink} from "react-router-dom"
 
 function NavBar() {
     return (
+        <div style={{backgroundColor: "black", textAlign: "center"}}>
+        <h2 style={{color: "white", margin: "0px"}}>West Coast Slice</h2>
         <Navbar>
-            <h1>West Coast Slice</h1>
+            <NavLink
+                exact
+                activeClassName="active"
+                to="/login"
+                >Log In
+            </NavLink>
+            <NavLink
+                exact
+                activeClassName="active"
+                to="/signup"
+                >Signup
+            </NavLink>
             <NavLink
                 exact
                 activeClassName="active"
@@ -31,6 +44,7 @@ function NavBar() {
                 >Logout
             </NavLink>
         </Navbar>
+        </div>
     )
 }
 

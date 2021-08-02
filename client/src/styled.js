@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components"
 
 export const Navbar = styled.nav`
-  background: lightblue;
-  height: 3.2em;
+  background: black;
+  height: 4.0em;
   display: flex;
   align-items: center;
   justify-content: center;
   a {
+    color: white;
     text-decoration: none;
     padding: 1em;
     transition: background 0.3s 0s ease-in-out;

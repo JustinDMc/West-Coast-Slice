@@ -21,9 +21,11 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path ="/login">
+          <NavBar />
           <Login setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/signup">
+          <NavBar />
           <Signup setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/home">
