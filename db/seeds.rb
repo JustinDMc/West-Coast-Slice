@@ -21,21 +21,21 @@ pizza_truck = PizzaTruck.create(name: "West Coast Slice")
 
 puts "Seeding Pizzas..."
 # Meat Lovers 
-pizza1 = Pizza.create(img_url: "http://veryculinary.com/wp-content/uploads/2017/01/Meat-lovers-pizza.jpg", name: "Meat Lovers", size: "Medium", price: 12)
+pizza1 = Pizza.create(img_url: "https://thumbs.dreamstime.com/t/meat-lovers-pizza-2010957.jpg", name: "Meat Lovers", size: "Medium", price: 12)
 # Supreme
-pizza2 = Pizza.create(img_url: "https://www.caseys.com/medias/sys_master/images/h47/h8b/8796496461854/8173_base-400x400/8173-base-400x400.png", name: "Supreme", size: "Medium", price: 14)
+pizza2 = Pizza.create(img_url: "https://media.istockphoto.com/photos/pizza-from-the-top-deluxe-picture-id182148711?k=6&m=182148711&s=612x612&w=0&h=98xrKN_qDB3WjNeMP-vLT8ywloOekXjNIGVpnx3yHpw=", name: "Supreme", size: "Medium", price: 14)
 # Hawaiian 
-pizza3 = Pizza.create(img_url: "https://prods3.imgix.net/images/articles/2017_05/nonfeatured-hawaiian-pizza-origins.jpg", name: "Hawaiian", size: "Medium", price: 13)
+pizza3 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/hawaiian-pizza-isolated-white-background-57285518.jpg", name: "Hawaiian", size: "Medium", price: 13)
 # Chicken Pesto
-pizza4 = Pizza.create(img_url: "https://theblondcook.com/wp-content/uploads/2021/03/pesto-chicken-pizza-6.jpg", name: "Chicken Pesto", size: "Medium", price: 12)
+pizza4 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/bianco-pizza-smoked-chicken-rucola-cheese-sauce-mushroom-pesto-neapolitan-round-white-background-mozzarella-tomato-218637928.jpg", name: "Chicken Pesto", size: "Medium", price: 12)
 # BBQ Chicken 
-pizza5 = Pizza.create(img_url: "https://www.tasteandtellblog.com/wp-content/uploads/2021/01/BBQ-Chicken-Pizza-3.jpg", name: "BBQ Chicken", size: "Medium", price: 15)
+pizza5 = Pizza.create(img_url: "https://images.ctfassets.net/xk7bgtqy9xrd/2PtXHwNYfo21wSzEDCn9Oq/cade0857737ac8a6e16efecb63985d91/BBQ_Pizza_thighs.jpg?q=80", name: "BBQ Chicken", size: "Medium", price: 15)
 # Vegetarian
-pizza6 = Pizza.create(img_url: "https://www.twopeasandtheirpod.com/wp-content/uploads/2021/03/Veggie-Pizza-8-500x375.jpg", name: "Veggie Lovers", size: "Medium", price: 11)
+pizza6 = Pizza.create(img_url: "https://previews.123rf.com/images/artmim/artmim1803/artmim180300079/96918245-vegetable-pizza-on-white-background-top-view.jpg", name: "Veggie Lovers", size: "Medium", price: 11)
 #Margherita 
-pizza7 = Pizza.create(img_url: "https://www.ezcater.com/lunchrush/wp-content/uploads/sites/2/2017/10/shutterstock_347791016.jpg.webp", name: "Margherita", size: "Medium", price: 10)
+pizza7 = Pizza.create(img_url: "https://images.creativemarket.com/0.1.0/ps/6013505/300/200/m1/fpc/wm0/pxnu5m3mr7z1ucekdnbm1nyqy0ppf2geox692klamxrtp5y9rx5o4tysfybbyexh-.jpg?1551896616&s=4618a284fd863f8cb83a1883761c15f2", name: "Margherita", size: "Medium", price: 10)
 #Buffalo 
-pizza8 = Pizza.create(img_url: "https://www.tablefortwoblog.com/wp-content/uploads/2019/01/buffalo-chicken-pizza-recipe-photos-tablefortwoblog-3.jpg", name: "Buffalo", size: "Medium", price: 14)
+pizza8 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/chicken-pizza-white-background-30364993.jpg", name: "Buffalo", size: "Medium", price: 14)
 
 puts "Seeding Orders..."
 order1 = Order.create(pizza_truck_id: pizza_truck.id, customer_id: customer1.id, pizza_id: pizza1.id)
