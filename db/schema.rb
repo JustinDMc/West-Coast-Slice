@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_07_30_204030) do
 
   create_table "toppings", force: :cascade do |t|
     t.string "name"
+    t.string "topping_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

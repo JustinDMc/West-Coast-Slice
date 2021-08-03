@@ -5,8 +5,16 @@ Rails.application.routes.draw do
   # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
   resources :customers
+
   resources :orders
+
   resources :pizzas
+
   resources :toppings
+  get "/meat_toppings", to:"toppings#meat"
+  get "/veggie_toppings", to:"toppings#veggie"
+  get "/other_toppings", to:"toppings#other"
+
+
   resources :logins, only: [:create]
 end
