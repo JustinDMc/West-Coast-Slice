@@ -3,7 +3,7 @@ import React from 'react'
 function Orders( {currentUser}) {
     return (
         <div style={{textAlign: 'center'}}>
-                <h1>Your Order.</h1> 
+                <h1 style={{color: "white"}}>Your Order.</h1> 
         <div className="userOrder">
                 <h3>Username:</h3>
                 <h3>Address:</h3>
