@@ -1,7 +1,22 @@
 import React from 'react'
 import About_Pizza_Oven from './About_Pizza_Oven.jpg';
+// import { makeStyles } from '@material-ui/core/styles';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link'
+
+// const useStyles = makeStyles({
+//     root: {
+//       maxWidth: 555,
+//     marginTop: '40px',
+//     },
+//     media: {
+//       height: 120,
+//     },
+//   });
 
 export default function About() {
+    // const classes = useStyles(); 
     return (
         <div>
             <h1 style={{color: "white", textAlign: 'center'}}>About</h1>
@@ -11,6 +26,10 @@ export default function About() {
                 </p>
                 <br></br>
                 <img src={About_Pizza_Oven} className="About_Pic"/>
+                <br></br>
+                <Link href='https://www.instagram.com'>
+                <InstagramIcon/>
+                </Link>
             </div>
         </div>
     )
