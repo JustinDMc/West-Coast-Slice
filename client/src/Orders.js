@@ -10,8 +10,8 @@ function Orders( {currentUser}) {
                 <br></br>
                 <br></br>
                 <br></br>
-                <h3 style={{textDecoration: 'underline'}}>Summery:</h3>
-                <p style={{fontWeight: "bold"}}>Pizza you have ordered:</p>
+                <h3 style={{textDecoration: 'underline'}}>Summary:</h3>
+                <p style={{fontWeight: "bold"}}>Pizza(s) you have ordered:</p>
                 <p style={{fontWeight: "bold"}}>Total amount:</p>
                 <p style={{fontWeight: "bold"}}>How long until ready:</p>
             </div>
