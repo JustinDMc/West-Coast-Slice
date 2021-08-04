@@ -159,10 +159,23 @@ export default function Home( {currentUser, pizzaCollection} ) {
     }
 
     // Handles editing an order in confirmation window
-    function openForm(e){
-        e.preventDefault();
-        document.getElementById("myForm").style.display = "block";
-    }
+    const [open, setOpen] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+  
+    const handlePopperClick = (event) => {
+      setAnchorEl(anchorEl ? null : event.currentTarget);
+    };
+  
+    const openPopper = Boolean(anchorEl);
+    const id = open ? 'simple-popper' : undefined;
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
  
     return (
         // Entire home screen page, classic pizzas and order form/ confirmation window
@@ -326,7 +339,58 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         <h3>Toppings: {classicToppings}</h3>
                         <h3>Price: ${classicPrice}</h3>
                         <Button onClick={deletePizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
-                        <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
+                        <Button onClick={handleClickOpen} style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
+                        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" useref="entry-form">
+                        <DialogTitle id="form-dialog-title">Modify your order:</DialogTitle>
+                        {/* <form onSubmit={(e) => submitWorkoutForm(e)}> */}
+                        <DialogContent>
+                            <DialogContentText>
+                               <b>Feel free to change your size or topping selections below!</b>
+                            </DialogContentText>
+                            <br></br>
+                            <DialogContentText>
+                               Size (<em>custom pizzas are Medium only</em>) :
+                            </DialogContentText>
+                            <TextField
+                            name="size"
+                            margin="dense"
+                            value="Medium"
+                            type="text"
+                            fullWidth
+                            // value={formData.name}
+                            // onChange={handleFormChange}
+                            />
+                            <TextField
+                            autoFocus
+                            name="date"
+                            margin="dense"
+                            label="When You Completed"
+                            type="text"
+                            fullWidth
+                            // value={formData.duration}
+                            // onChange={handleFormChange}
+                            />
+                            {/* <TextField
+                            autoFocus
+                            name="difficulty"
+                            margin="dense"
+                            label="Difficulty"
+                            type="text"
+                            fullWidth
+                            // value={formData.difficulty}
+                            onChange={handleFormChange} */}
+                            {/* /> */}
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose} color="primary">
+                                Cancel
+                            </Button>
+                            <Button onClick={handleClose} type="submit" color="primary">
+                                Submit
+                            </Button>
+                        </DialogActions>
+                        {/* </form> */}
+                        </Dialog>
                         <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
                     </div> : null}
                 </div>
