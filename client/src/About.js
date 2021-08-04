@@ -1,19 +1,9 @@
 import React from 'react'
 import About_Pizza_Oven from './About_Pizza_Oven.jpg';
-// import { makeStyles } from '@material-ui/core/styles';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import Typography from '@material-ui/core/Typography';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import Link from '@material-ui/core/Link'
-
-// const useStyles = makeStyles({
-//     root: {
-//       maxWidth: 555,
-//     marginTop: '40px',
-//     },
-//     media: {
-//       height: 120,
-//     },
-//   });
 
 export default function About() {
     // const classes = useStyles(); 
@@ -27,9 +17,45 @@ export default function About() {
                 <br></br>
                 <img src={About_Pizza_Oven} className="About_Pic"/>
                 <br></br>
-                <Link href='https://www.instagram.com'>
-                <InstagramIcon/>
-                </Link>
+                <footer className="footer">
+
+
+                    <span id="AboutSpan">West Coast Slice:</span>
+                    <span id="SpanLink">
+                        <Link href='https://www.instagram.com' target="_blank">
+                        <InstagramIcon/>
+                        </Link>
+                        <Link href="https://www.linkedin.com" target="_blank">
+                        <LinkedInIcon/>
+                        </Link>
+                    </span>
+
+
+                    <span id="AboutSpan">Justin McArthur:</span>
+                    <span id="SpanLink">
+                        <Link href="https://www.linkedin.com/in/daniel-mcarthur-7a928b133/" target="_blank">
+                        <LinkedInIcon/>
+                        </Link>
+                        <Link href="https://github.com/JustinDMc" target="_blank">
+                        <GitHubIcon/>
+                        </Link>
+                        <Link href="https://jdanielmcarthur.medium.com/" target="_blank" style={{fontWeight:"bold", fontSize: '25px', textDecoration: 'underline'}}>Blog</Link>
+                    </span>
+
+
+                    <span id="AboutSpan">Allen Palacios:</span>
+                    <span id="SpanLink">
+                        <Link href="https://www.linkedin.com/in/allen-palacios-73b677151/" target="_blank">
+                        <LinkedInIcon/>
+                        </Link>
+                        <Link href="https://github.com/ajpalacios08" target="_blank">
+                        <GitHubIcon/>
+                        </Link>
+                        <Link href="https://apalacios1994.medium.com/" target="_blank" style={{fontWeight:"bold", fontSize: '25px', textDecoration: 'underline'}}>Blog</Link>
+                    </span>
+
+
+                </footer>
             </div>
         </div>
     )

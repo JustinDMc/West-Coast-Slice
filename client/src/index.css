@@ -25,11 +25,12 @@ code {
   background-color: white;
 }
 
+/* CSS for the About page */
 .AboutParagraph {
   text-align: left;
   border: 5px solid black;
-  max-height: 100px;
   max-height: 300px;
+  max-width: 2000px;
   padding: 100px;
   padding-top: 10px;
   padding-bottom: 300px;
@@ -42,5 +43,21 @@ code {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 35%;
+}
+
+.footer {
+  display: center;
+}
+
+#AboutSpan {
+  display: center;
+  margin-right: 5px;
+  margin-left: 170px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+#SpanLink {
+  margin-right: 100px
 }
