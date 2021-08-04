@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_07_30_204030) do
     t.string "name"
     t.string "size"
     t.integer "price"
+    t.boolean "ordered"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

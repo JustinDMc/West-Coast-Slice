@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
 
 export default function Home( {currentUser, pizzaCollection} ) {
     // Where we set the state of all our toppings fetches
@@ -38,6 +45,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
         .then(res => res.json())
         .then(sauceToppingData => setSauceToppingCollection(sauceToppingData))
     }, [])
+  
 
     // Handles the conditional rendering for the first topping
     const [meatSelect, setMeatSelect] = useState(false);
@@ -108,16 +116,20 @@ export default function Home( {currentUser, pizzaCollection} ) {
         setMeatSelect3(false)
     }
 
-    // Handles tracking custom selections in pizza form, and conditional rendering on selections in confirmation window
+    // Handles tracking orders from classic pizzas and in pizza form, and handles conditional rendering on selections in custom order form
     const [name, setName] = useState("")
+    const [classicName, setClassicName] = useState("")
     const [size, setSize] = useState("")
     const [sauce, setSauce] = useState("")
     const [cheese, setCheese] = useState("")
     const [topping1, setTopping1] = useState("")
     const [topping2, setTopping2] = useState("")
     const [topping3, setTopping3] = useState("")
+    const [classicToppings, setClassicToppings] = useState("")
     const [price, setPrice] = useState("")
+    const [classicPrice, setClassicPrice] = useState("")
     const [orderSubmit, setOrderSubmit] = useState(false)
+    const [classicOrder, setClassicOrder] = useState(false)
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -131,7 +143,25 @@ export default function Home( {currentUser, pizzaCollection} ) {
         } else {
             setPrice(14)
         }
-        setOrderSubmit(true)
+        setOrderSubmit(!orderSubmit)
+    }
+
+    async function orderClassic(e){
+        setClassicOrder(!classicOrder)
+        setClassicName(e.target.name)
+        setClassicPrice(e.target.value)
+        setClassicToppings(e.target.id)
+    }
+
+    async function deletePizzaOrder(){
+        setClassicOrder(!classicOrder)
+        setOrderSubmit(!orderSubmit)
+    }
+
+    // Handles editing an order in confirmation window
+    function openForm(e){
+        e.preventDefault();
+        document.getElementById("myForm").style.display = "block";
     }
  
     return (
@@ -145,13 +175,16 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
                 {/* Where we map through backend pizzas and create a div with an img, name, toppings, size and price for each one */}
                 {pizzaCollection.map(pizza => 
-                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "white", minHeight: "375px"}}>
+                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "white", minHeight: "442px"}}>
                         <img src={pizza.img_url} style={{maxLength: "100px", maxHeight: "100px"}}/>
-                        <h2>{pizza.name}</h2>
+                        <h2 style={{backgroundColor: "red"}}>{pizza.name}</h2>
+                        <hr></hr>
                         <p>{pizza.toppings.map(topping => topping.name).join(" / ")}</p>
+                        <hr></hr>
                         <h5>{pizza.size}</h5>
+                        <hr></hr>
                         <h3>${pizza.price}</h3>
-                        <button>Order</button>
+                        <button name={pizza.name} value={pizza.price} id={pizza.toppings.map(topping => topping.name).join(" / ")}onClick={orderClassic}>Order</button>
                     </div>
                     )}
             </div>
@@ -270,23 +303,32 @@ export default function Home( {currentUser, pizzaCollection} ) {
                 <hr></hr>
 
                 {/* Confirmation window area */}
-                <div style={{textAlign: 'left'}}>
-                    <h1 style={{color: "white"}}>Confirm Your Order:</h1>  
+                <div style={{textAlign: 'left', display: "grid", gridTemplateRows: "repeat(1, 120px"}}>
+                    <h1 style={{color: "white", textAlign: "center"}}>Confirm Your Order:</h1>  
                     {/* Pizza 1 */}
                     {orderSubmit?
-                    <div style={{border: "2px solid black", marginTop: "100px", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
+                    <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
                         <h2>Summary</h2>
                         <h3>Name: {name}</h3>
                         <h3>Size: {size}</h3>
-                        <h3>Toppings: {sauce}, {cheese}, {topping1}, {topping2}, {topping3}</h3>
+                        <h3>Toppings: {sauce} / {cheese} / {topping1} / {topping2} / {topping3}</h3>
                         <h3>Price: ${price}</h3>
-                        <button>Edit Order</button>
-                        <button>Confirm Order</button>
+                        <button onClick={deletePizzaOrder} style={{marginLeft: "20%"}}>Delete Order</button>
+                        <button style={{marginLeft: "10%"}}>Edit Order</button>
+                        <button style={{marginLeft: "10%"}}>Confirm Order</button>
                     </div> : null}
                     {/* Pizza 2 */}
-                    <div>
-
-                    </div>
+                    {classicOrder? 
+                    <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
+                        <h2>Summary</h2>
+                        <h3>Name: {classicName}</h3>
+                        <h3>Size: Medium</h3>
+                        <h3>Toppings: {classicToppings}</h3>
+                        <h3>Price: ${classicPrice}</h3>
+                        <Button onClick={deletePizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
+                        <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
+                        <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
+                    </div> : null}
                 </div>
 
             </div>
