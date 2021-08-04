@@ -16,4 +16,12 @@ class ToppingsController < ApplicationController
         render json: Topping.all.select {|topping| topping.topping_type == "Other"}
     end 
 
+    def cheese
+        render json: Topping.all.select {|topping| topping.topping_type == "Cheese"}
+    end 
+
+    def sauce
+        render json: Topping.all.select {|topping| topping.topping_type == "Sauce"}
+    end 
+
 end

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get "/meat_toppings", to:"toppings#meat"
   get "/veggie_toppings", to:"toppings#veggie"
   get "/other_toppings", to:"toppings#other"
+  get "/cheese_toppings", to:"toppings#cheese"  
+  get "/sauce_toppings", to:"toppings#sauce"
+
 
 
   resources :logins, only: [:create]
