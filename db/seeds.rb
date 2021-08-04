@@ -36,6 +36,8 @@ pizza6 = Pizza.create(img_url: "https://previews.123rf.com/images/artmim/artmim1
 pizza7 = Pizza.create(img_url: "https://images.creativemarket.com/0.1.0/ps/6013505/300/200/m1/fpc/wm0/pxnu5m3mr7z1ucekdnbm1nyqy0ppf2geox692klamxrtp5y9rx5o4tysfybbyexh-.jpg?1551896616&s=4618a284fd863f8cb83a1883761c15f2", name: "Margherita", size: "Medium", price: 10)
 #Buffalo 
 pizza8 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/chicken-pizza-white-background-30364993.jpg", name: "Buffalo", size: "Medium", price: 14)
+#Cheese 
+pizza9 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/tasty-hot-cheese-pizza-white-background-120059374.jpg", name: "Cheese", size: "Medium", price: 10)
 
 puts "Seeding Orders..."
 order1 = Order.create(pizza_truck_id: pizza_truck.id, customer_id: customer1.id, pizza_id: pizza1.id)
@@ -65,10 +67,11 @@ topping16= Topping.create(name: "Pineapple", topping_type: "Veggie")
 topping17 = Topping.create(name: "Mushrooms", topping_type: "Veggie")
 topping18 = Topping.create(name: "Mozarella", topping_type: "Cheese")
 topping19 = Topping.create(name: "Marinara", topping_type: "Sauce")
-topping20 = Topping.create(name: "BBQ sauce", topping_type: "Sauce")
+topping20 = Topping.create(name: "BBQ Sauce", topping_type: "Sauce")
 topping21 = Topping.create(name: "Cilantro", topping_type: "Veggie")
-topping22 = Topping.create(name: "Feta", topping_type: "Other")
+topping22 = Topping.create(name: "Feta", topping_type: "Cheese")
 topping23 = Topping.create(name: "Garlic", topping_type: "Veggie")
+topping24 = Topping.create(name: "Hot Honey", topping_type: "Other")
 topping25 = Topping.create(name: "Parmesan", topping_type: "Cheese")
 topping26 = Topping.create(name: "Basil", topping_type: "Veggie")
 topping27 = Topping.create(name: "Tomato", topping_type: "Veggie")
@@ -80,6 +83,11 @@ topping32 = Topping.create(name: "Buffalo Hot Sauce", topping_type: "Other")
 topping33 = Topping.create(name: "Parsley", topping_type: "Veggie")
 topping34 = Topping.create(name: "Provolone", topping_type: "Cheese")
 topping35 = Topping.create(name: "American Cheese", topping_type: "Cheese")
+topping36 = Topping.create(name: "Ranch", topping_type: "Other")
+topping37 = Topping.create(name: "Sri-Rancha", topping_type: "Other")
+topping38 = Topping.create(name: "Balsamic Fig Glaze", topping_type: "Other")
+topping39 = Topping.create(name: "Alfredo Sauce", topping_type: "Sauce")
+
 
 
 puts "Seeding PizzaToppings..."
@@ -142,11 +150,18 @@ pizza_topping42 = PizzaTopping.create(pizza_id: pizza7.id, topping_id: topping31
 
 # Buffalo Pizza 
 pizza_topping43 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping11.id)
-pizza_topping43 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping15.id)
-pizza_topping43 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping32.id)
-pizza_topping43 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping33.id)
-pizza_topping43 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping34.id)
-pizza_topping43 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping35.id)
+pizza_topping44 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping15.id)
+pizza_topping45 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping32.id)
+pizza_topping46 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping33.id)
+pizza_topping47 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping34.id)
+pizza_topping48 = PizzaTopping.create(pizza_id: pizza8.id, topping_id: topping35.id)
+
+# Cheese Pizza 
+pizza_topping49 = PizzaTopping.create(pizza_id: pizza9.id, topping_id: topping18.id)
+pizza_topping50 = PizzaTopping.create(pizza_id: pizza9.id, topping_id: topping19.id)
+pizza_topping51 = PizzaTopping.create(pizza_id: pizza9.id, topping_id: topping25.id)
+pizza_topping52 = PizzaTopping.create(pizza_id: pizza9.id, topping_id: topping31.id)
+pizza_topping53 = PizzaTopping.create(pizza_id: pizza9.id, topping_id: topping34.id)
 
 
 puts "Finished seeding!"

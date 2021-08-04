@@ -141,7 +141,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             {/* Left side of home page, where all pizzas are rendered */}
 
-            <div className="pizzaContainer" style={{border: "10px solid orange", flex: "65%", textAlign: 'center' ,display: "grid", gridTemplateColumns: "repeat(2, 300px)", gridRowGap: "24px", justifyContent: "space-around", alignItems: "center", width: "100%", margin: "auto"}}>
+            <div className="pizzaContainer" style={{flex: "65%", textAlign: 'center' ,display: "grid", gridTemplateColumns: "repeat(3, 250px)", gridRowGap: "24px", justifyContent: "space-around", alignItems: "center", width: "100%", margin: "auto"}}>
 
                 {/* Where we map through backend pizzas and create a div with an img, name, toppings, size and price for each one */}
                 {pizzaCollection.map(pizza => 
@@ -158,13 +158,13 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             {/* Right side of home page, order form and confirmation window */}
 
-            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', border: "10px solid orange", maxHeight: "100%"}}>
+            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', borderLeft: '6px solid black'}}>
                 <h1 style={{color: "white"}}>Make your own!</h1>
                 <h3 style={{color: "white"}}><em>--3 topping maximum--</em></h3>
                 <h5 style={{color: "white"}}><em>Small $8, Medium $10, Large $12, X-Large $14</em></h5>
 
                 {/* Entire pizza form (upper right side) that on "submit" will get sent to Orders */}
-                <form onSubmit={handleSubmit} style={{height: "30%"}}>
+                <form onSubmit={handleSubmit} style={{}}>
 
                     {/* Size label/selection area */}
                     <label for="size" style={{color: "white", fontSize: "24px"}}>Size:   </label>
