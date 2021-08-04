@@ -183,6 +183,20 @@ export default function Home( {currentUser, pizzaCollection} ) {
     const handleClose2 = () => {
         setOpen2(false);
     };
+
+    // Handles confirming the custom pizza in confirmation window
+    async function handleConfirmCustomOrder(e){
+        e.preventDefault();
+        alert("Pizza Confirmed");
+        setOrderSubmit(!orderSubmit)
+    }
+
+    // Handles confirming the classic pizza in confirmation window
+    async function handleConfirmClassicOrder(e){
+        e.preventDefault();
+        alert("Pizza Confirmed");
+        setClassicOrder(!classicOrder)
+    }
  
     return (
         // Entire home screen page, classic pizzas and order form/ confirmation window
@@ -382,7 +396,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         </DialogActions>
                         {/* </form> */}
                         </Dialog>
-                        <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
+                        <Button onClick={handleConfirmCustomOrder}style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
                     </div> : null}
 
 
@@ -441,7 +455,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         </DialogActions>
                         {/* </form> */}
                         </Dialog>
-                        <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
+                        <Button onClick={handleConfirmClassicOrder}style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
                     </div> : null}
                 </div>
 
