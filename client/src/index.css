@@ -12,6 +12,13 @@ code {
     monospace;
 }
 
+.Title {
+  font-family: 'Bungee Inline', cursive;
+font-family: 'Zen Tokyo Zoo', cursive;
+  font-size: 100px;
+}
+
+/* Order page */
 .userOrder {
   text-align: left;
   border: 5px solid black;
@@ -22,10 +29,10 @@ code {
   padding-bottom: 300px;
   margin-left: 75px;
   margin-right: 75px;
-  background-color: white;
+  background-color: rgba(255,255,255,0.4);
 }
 
-/* CSS for the About page */
+/* About page */
 .AboutParagraph {
   text-align: left;
   border: 5px solid black;
@@ -61,3 +68,4 @@ code {
 #SpanLink {
   margin-right: 100px
 }
+

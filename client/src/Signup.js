@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import { NavLink } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const Signup = ( {setCurrentUser } ) => {
     const history = useHistory();
@@ -35,36 +37,35 @@ const Signup = ( {setCurrentUser } ) => {
 
     return (
         <div style={{textAlign: 'center'}}>
-            <form onSubmit={handleSubmit} style={{backgroundColor: "white", border: '1px solid black', borderRadius: "8px", padding: "8px", width: "300px", padding: "8px", margin: "auto"}}>
-                <h1>Signup</h1>
-                <input 
+            <form onSubmit={handleSubmit} style={{backgroundColor: "white", border: '1px solid black', borderRadius: "8px", padding: "8px", width: "300px", padding: "8px", margin: "auto", marginTop: "250px"}}>
+            <h1 style={{color: "#cf3f0a"}}>West Coast Slice!</h1>
+                <h2>Sign up</h2>
+                <TextField size="small" variant="outlined" 
                     type="text" 
                     placeholder="Username" 
                     name="username" 
                     value={username} 
-                    onChange={(e) => setUserName(e.target.value)}>
-                </input>
+                    onChange={(e) => setUserName(e.target.value)}/>
                 <br></br>
                 <br></br>
-                <input 
+                <TextField size="small" variant="outlined" 
                     type="password" 
                     placeholder="Password"
                     name="password"
                     value={password} 
-                    onChange={(e) => setPassword(e.target.value)}>
-                </input>
+                    onChange={(e) => setPassword(e.target.value)}/>
                 <br></br>
                 <br></br>
-                <input 
+                <TextField size="small" variant="outlined" 
                     type="text" 
                     placeholder="Address" 
                     name="home_address" 
                     value={home_address} 
-                    onChange={(e) => setHomeAddress(e.target.value)}>
-                </input>
+                    onChange={(e) => setHomeAddress(e.target.value)}/>
                 <br></br>
                 <br></br>
-                <input submit type="submit" value="Sign Up" style={{color: "black", backgroundColor: "cyan"}}></input>
+                <br></br>
+                <Button variant="contained" submit type="submit" value="Sign Up" style={{color: "black", fontWeight: "bold"}}>Sign Up</Button>
                 {errors?errors.map(error => <div>{error}</div>):null}
             </form>
         </div>

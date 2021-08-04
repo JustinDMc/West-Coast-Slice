@@ -6,7 +6,6 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import Link from '@material-ui/core/Link'
 
 export default function About() {
-    // const classes = useStyles(); 
     return (
         <div>
             <h1 style={{color: "white", textAlign: 'center'}}>About</h1>
@@ -17,6 +16,8 @@ export default function About() {
                 <br></br>
                 <img src={About_Pizza_Oven} className="About_Pic"/>
                 <br></br>
+
+                {/* icons and links */}
                 <footer className="footer">
 
 
