@@ -274,12 +274,14 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <h1 style={{color: "white"}}>Confirm Your Order:</h1>  
                     {/* Pizza 1 */}
                     {orderSubmit?
-                    <div style={{border: "2px solid black", height: "550px", marginTop: "100px", marginLeft: "20px", marginRight: "20px"}}>
+                    <div style={{border: "2px solid black", marginTop: "100px", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
                         <h2>Summary</h2>
                         <h3>Name: {name}</h3>
                         <h3>Size: {size}</h3>
-                        <h3>{sauce}, {cheese}, {topping1}, {topping2}, {topping3}</h3>
+                        <h3>Toppings: {sauce}, {cheese}, {topping1}, {topping2}, {topping3}</h3>
                         <h3>Price: ${price}</h3>
+                        <button>Edit Order</button>
+                        <button>Confirm Order</button>
                     </div> : null}
                     {/* Pizza 2 */}
                     <div>
