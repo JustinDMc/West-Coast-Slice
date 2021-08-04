@@ -5,9 +5,15 @@ class PizzasController < ApplicationController
         render json: pizzas, only: [:id, :img_url, :name, :size, :price], include: :toppings
     end
 
-    # def show  
-    #     pizza = Pizza.find(params[:id])
-    #     render json: pizza
-    # end  
+    def create  
+        pizza = Pizza.create(pizza_params)
+        render json: pizza
+    end  
+
+    private 
+
+    def pizza_params 
+        params.require(:pizza).permit(:name, :size, :price)
+    end  
 
 end
