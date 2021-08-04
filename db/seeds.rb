@@ -21,23 +21,23 @@ pizza_truck = PizzaTruck.create(name: "West Coast Slice")
 
 puts "Seeding Pizzas..."
 # Meat Lovers 
-pizza1 = Pizza.create(img_url: "https://thumbs.dreamstime.com/t/meat-lovers-pizza-2010957.jpg", name: "Meat Lovers", size: "Medium", price: 12)
+pizza1 = Pizza.create(img_url: "https://thumbs.dreamstime.com/t/meat-lovers-pizza-2010957.jpg", name: "Meat Lovers", size: "Medium", price: 12, ordered: false)
 # Supreme
-pizza2 = Pizza.create(img_url: "https://media.istockphoto.com/photos/pizza-from-the-top-deluxe-picture-id182148711?k=6&m=182148711&s=612x612&w=0&h=98xrKN_qDB3WjNeMP-vLT8ywloOekXjNIGVpnx3yHpw=", name: "Supreme", size: "Medium", price: 14)
+pizza2 = Pizza.create(img_url: "https://media.istockphoto.com/photos/pizza-from-the-top-deluxe-picture-id182148711?k=6&m=182148711&s=612x612&w=0&h=98xrKN_qDB3WjNeMP-vLT8ywloOekXjNIGVpnx3yHpw=", name: "Supreme", size: "Medium", price: 14, ordered: false)
 # Hawaiian 
-pizza3 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/hawaiian-pizza-isolated-white-background-57285518.jpg", name: "Hawaiian", size: "Medium", price: 13)
+pizza3 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/hawaiian-pizza-isolated-white-background-57285518.jpg", name: "Hawaiian", size: "Medium", price: 13, ordered: false)
 # Chicken Pesto
-pizza4 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/bianco-pizza-smoked-chicken-rucola-cheese-sauce-mushroom-pesto-neapolitan-round-white-background-mozzarella-tomato-218637928.jpg", name: "Chicken Pesto", size: "Medium", price: 12)
+pizza4 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/bianco-pizza-smoked-chicken-rucola-cheese-sauce-mushroom-pesto-neapolitan-round-white-background-mozzarella-tomato-218637928.jpg", name: "Chicken Pesto", size: "Medium", price: 12, ordered: false)
 # BBQ Chicken 
-pizza5 = Pizza.create(img_url: "https://images.ctfassets.net/xk7bgtqy9xrd/2PtXHwNYfo21wSzEDCn9Oq/cade0857737ac8a6e16efecb63985d91/BBQ_Pizza_thighs.jpg?q=80", name: "BBQ Chicken", size: "Medium", price: 15)
+pizza5 = Pizza.create(img_url: "https://images.ctfassets.net/xk7bgtqy9xrd/2PtXHwNYfo21wSzEDCn9Oq/cade0857737ac8a6e16efecb63985d91/BBQ_Pizza_thighs.jpg?q=80", name: "BBQ Chicken", size: "Medium", price: 15, ordered: false)
 # Vegetarian
-pizza6 = Pizza.create(img_url: "https://previews.123rf.com/images/artmim/artmim1803/artmim180300079/96918245-vegetable-pizza-on-white-background-top-view.jpg", name: "Veggie Lovers", size: "Medium", price: 11)
+pizza6 = Pizza.create(img_url: "https://previews.123rf.com/images/artmim/artmim1803/artmim180300079/96918245-vegetable-pizza-on-white-background-top-view.jpg", name: "Veggie Lovers", size: "Medium", price: 11, ordered: false)
 #Margherita 
-pizza7 = Pizza.create(img_url: "https://images.creativemarket.com/0.1.0/ps/6013505/300/200/m1/fpc/wm0/pxnu5m3mr7z1ucekdnbm1nyqy0ppf2geox692klamxrtp5y9rx5o4tysfybbyexh-.jpg?1551896616&s=4618a284fd863f8cb83a1883761c15f2", name: "Margherita", size: "Medium", price: 10)
+pizza7 = Pizza.create(img_url: "https://images.creativemarket.com/0.1.0/ps/6013505/300/200/m1/fpc/wm0/pxnu5m3mr7z1ucekdnbm1nyqy0ppf2geox692klamxrtp5y9rx5o4tysfybbyexh-.jpg?1551896616&s=4618a284fd863f8cb83a1883761c15f2", name: "Margherita", size: "Medium", price: 10, ordered: false)
 #Buffalo 
-pizza8 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/chicken-pizza-white-background-30364993.jpg", name: "Buffalo", size: "Medium", price: 14)
+pizza8 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/chicken-pizza-white-background-30364993.jpg", name: "Buffalo", size: "Medium", price: 14, ordered: false)
 #Cheese 
-pizza9 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/tasty-hot-cheese-pizza-white-background-120059374.jpg", name: "Cheese", size: "Medium", price: 10)
+pizza9 = Pizza.create(img_url: "https://thumbs.dreamstime.com/b/tasty-hot-cheese-pizza-white-background-120059374.jpg", name: "Cheese", size: "Medium", price: 10, ordered: false)
 
 puts "Seeding Orders..."
 order1 = Order.create(pizza_truck_id: pizza_truck.id, customer_id: customer1.id, pizza_id: pizza1.id)

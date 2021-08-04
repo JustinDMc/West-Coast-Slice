@@ -5,6 +5,7 @@ class CreatePizzas < ActiveRecord::Migration[6.1]
       t.string :name 
       t.string :size 
       t.integer :price
+      t.boolean :ordered
 
       t.timestamps
     end
