@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+.Title {
+  font-family: 'Bungee Inline', cursive;
+font-family: 'Zen Tokyo Zoo', cursive;
+  font-size: 100px;
+}
+
 /* Order page */
 .userOrder {
   text-align: left;
@@ -62,3 +68,4 @@ code {
 #SpanLink {
   margin-right: 100px
 }
+
