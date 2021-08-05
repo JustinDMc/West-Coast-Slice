@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import {NavLink} from "react-router-dom"
 
 export default function Home( {currentUser, pizzaCollection} ) {
     // Where we set the state of all our toppings fetches
@@ -125,12 +126,12 @@ export default function Home( {currentUser, pizzaCollection} ) {
     const [topping1, setTopping1] = useState("")
     const [topping2, setTopping2] = useState("")
     const [topping3, setTopping3] = useState("")
-    const [customToppings, setCustomToppings] = useState("");
     const [classicToppings, setClassicToppings] = useState("")
     const [price, setPrice] = useState("")
     const [classicPrice, setClassicPrice] = useState("")
     const [orderSubmit, setOrderSubmit] = useState(false)
     const [classicOrder, setClassicOrder] = useState(false)
+    const [customToppings, setCustomToppings] = useState(sauce + " / " + cheese + " / " + topping1 + " / " + topping2 + " / " + topping3);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -185,16 +186,10 @@ export default function Home( {currentUser, pizzaCollection} ) {
     };
 
     // Handles confirming the custom pizza in confirmation window
-    async function handleConfirmCustomOrder(e){
+    async function handleConfirmOrder(e){
         e.preventDefault();
         alert("Pizza Confirmed");
         setOrderSubmit(!orderSubmit)
-    }
-
-    // Handles confirming the classic pizza in confirmation window
-    async function handleConfirmClassicOrder(e){
-        e.preventDefault();
-        alert("Pizza Confirmed");
         setClassicOrder(!classicOrder)
     }
  
@@ -337,7 +332,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                 <hr></hr>
 
                 {/* Confirmation window area */}
-                <div style={{textAlign: 'left', display: "grid", gridTemplateRows: "repeat(1, 120px"}}>
+                <div style={{textAlign: 'left', display: "grid", gridTemplateRows: "repeat(1, 90px"}}>
                     <h1 style={{color: "white", textAlign: "center"}}>Confirm Your Order:</h1>  
 
                     {/* Pizza 1 */}
@@ -380,10 +375,10 @@ export default function Home( {currentUser, pizzaCollection} ) {
                             autoFocus
                             name="date"
                             margin="dense"
-                            value={size + " / " + sauce + " / " + cheese + " / " + topping1 + " / " + topping2 + " / " + topping3}
+                            value={customToppings}
                             type="text"
                             fullWidth
-                            onChange={(e) => setCustomToppings(e.target.value)}
+                            // onChange={}
                             />
                         </DialogContent>
                         <DialogActions>
@@ -396,7 +391,6 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         </DialogActions>
                         {/* </form> */}
                         </Dialog>
-                        <Button onClick={handleConfirmCustomOrder}style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
                     </div> : null}
 
 
@@ -455,10 +449,12 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         </DialogActions>
                         {/* </form> */}
                         </Dialog>
-                        <Button onClick={handleConfirmClassicOrder}style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
                     </div> : null}
                 </div>
-
+                {classicOrder || orderSubmit ? 
+                 <Button onClick={handleConfirmOrder}style={{border: "2px solid black", backgroundColor: "green", marginTop: "10px"}} size="small">
+                    <NavLink to="/orders">Confirm Order</NavLink>
+                </Button> :null}
             </div>
         </div>
     )
