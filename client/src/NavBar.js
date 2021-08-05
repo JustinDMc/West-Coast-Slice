@@ -4,8 +4,8 @@ import {NavLink} from "react-router-dom"
 
 function NavBar() {
     return (
-        <div style={{backgroundColor: "black", textAlign: "center"}}>
-        <h1 className="Title"style={{color: "white", margin: "0px"}}>West Coast Slice</h1>
+        <div style={{backgroundColor: "#992b1d", textAlign: "center"}}>
+        <h1 className="Title"style={{color: "#262626", margin: "0px"}}>West Coast Slice</h1>
         <Navbar>
             <NavLink
                 exact

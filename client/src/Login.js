@@ -36,8 +36,8 @@ export default function Login({setCurrentUser}) {
     return (
         <div style={{textAlign: "center", margin: "auto"}}>
             <form className="login-form" onSubmit={handleSubmit} style={{backgroundColor: "white", border: '1px solid black', borderRadius: "8px", padding: "8px", width: "300px", margin: "auto", marginTop: "250px"}}>
-                <h1 style={{color: "#cf3f0a"}}>West Coast Slice!</h1>
-                <h2>Login</h2>
+                <h1 style={{color: "#992b1d"}}>West Coast Slice!</h1>
+                <h2 style={{color: "#262626"}}>Login</h2>
                 <TextField size="small" variant="outlined" type="text" 
                     placeholder="Username"
                     name="username" 
@@ -53,7 +53,7 @@ export default function Login({setCurrentUser}) {
                     onChange={(e) => setPassword(e.target.value)}/>
                     <br></br>
                     <br></br>
-                <NavLink to="/signup" style={{fontWeight: "bold"}}>Sign Up</NavLink>
+                <NavLink to="/signup" style={{fontWeight: "bold", color: "#36a9e3"}}>Sign Up</NavLink>
                 <br></br>
                 <br></br>
                 <Button variant="contained" submit type="submit" value="Log In" style={{color: "black", fontWeight: "bold"}}>Login</Button>

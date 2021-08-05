@@ -13,9 +13,9 @@ code {
 }
 
 .Title {
-  font-family: 'Bungee Inline', cursive;
-font-family: 'Zen Tokyo Zoo', cursive;
-  font-size: 100px;
+  font-family: 'Zen Tokyo Zoo', cursive;
+  /* font-family: 'Piedra', cursive; */
+  font-size: 110px;
 }
 
 /* Order page */
