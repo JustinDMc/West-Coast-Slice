@@ -40,7 +40,7 @@ function App() {
         </Route>
         <Route exact path ="/orders">
           <NavBar />
-          <Orders />
+          <Orders currentUser={currentUser}/>
         </Route>
       </Switch>
     </div>
