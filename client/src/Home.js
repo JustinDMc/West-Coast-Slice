@@ -188,9 +188,9 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
                 {/* Where we map through backend pizzas and create a div with an img, name, toppings, size and price for each one */}
                 {pizzaCollection.map(pizza => 
-                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "white", minHeight: "442px"}}>
+                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "rgba(153, 43, 29, 0.8)", minHeight: "442px"}}>
                         <img src={pizza.img_url} style={{maxLength: "100px", maxHeight: "100px"}}/>
-                        <h2 style={{backgroundColor: "red"}}>{pizza.name}</h2>
+                        <h2 style={{backgroundColor: "#262626", color: "white"}}>{pizza.name}</h2>
                         <hr></hr>
                         <p>{pizza.toppings.map(topping => topping.name).join(" / ")}</p>
                         <hr></hr>

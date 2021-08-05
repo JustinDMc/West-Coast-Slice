@@ -1,6 +1,35 @@
 import React from 'react'
+import { useRef } from "react"
 
-function Orders( {currentUser}) {
+export default function Orders( {currentUser}) {
+    // Handles the timer for the order status
+
+
+
+// ----------------------------- Something I tried ---------------------------------
+        // const [status, setStatus] = useState("Cooking in progress.... (15min)")
+        // const statusTimer = useRef("Cooking in progress.... (15min)");
+        // statusTimer.current = "Cooking in progress.... (15min)";
+
+        // const getstatusTimeout = () => {
+        //     setTimeout(() => {
+        //         setTimer(statusTimer.current);
+        //     }, 3000);
+        // };
+        
+        // const onTimerLoad = () => {
+        //     statusTimer.current.focus();
+        // }
+    
+// ----------------------------- Something I tried ---------------------------------
+//     const [status, setStatus] = useState("Cooking in progress.... (15min)")
+
+//    function orderTimer(e) {
+//         e.preventDefault();
+//         const Status = setTimeout(() => console.log("You Order is ready"), 1000)
+//         return Status
+//    }
+
     return (
         <div style={{textAlign: 'center'}}>
                 <h1 style={{color: "white", fontSize: "50px"}}>Your Order</h1> 
@@ -13,10 +42,12 @@ function Orders( {currentUser}) {
                 <h3 style={{textDecoration: 'underline', fontSize: "30px"}}>Summary:</h3>
                 <p style={{fontWeight: "bold", fontSize: "30px"}}>Pizza(s) you have ordered:</p>
                 <p style={{fontWeight: "bold", fontSize: "30px"}}>Total amount:</p>
-                <p style={{fontWeight: "bold", fontSize: "30px"}}>How long until ready:</p>
+                <p style={{fontWeight: "bold", fontSize: "30px"}}>
+                    How long until ready:
+                    </p>
             </div>
         </div>
     )
 }
 
-export default Orders
+
