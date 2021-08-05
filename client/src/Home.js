@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import {NavLink} from "react-router-dom"
 
 export default function Home( {currentUser, pizzaCollection} ) {
     // Where we set the state of all our toppings fetches
@@ -130,6 +131,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
     const [classicPrice, setClassicPrice] = useState("")
     const [orderSubmit, setOrderSubmit] = useState(false)
     const [classicOrder, setClassicOrder] = useState(false)
+    const [customToppings, setCustomToppings] = useState(sauce + " / " + cheese + " / " + topping1 + " / " + topping2 + " / " + topping3);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -153,21 +155,16 @@ export default function Home( {currentUser, pizzaCollection} ) {
         setClassicToppings(e.target.id)
     }
 
-    async function deletePizzaOrder(){
-        setClassicOrder(!classicOrder)
+    async function deleteCustomPizzaOrder(){
         setOrderSubmit(!orderSubmit)
     }
 
-    // Handles editing an order in confirmation window
+    async function deleteClassicPizzaOrder(){
+        setClassicOrder(!classicOrder)
+    }
+
+    // Handles editing a classic order in confirmation window
     const [open, setOpen] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-  
-    const handlePopperClick = (event) => {
-      setAnchorEl(anchorEl ? null : event.currentTarget);
-    };
-  
-    const openPopper = Boolean(anchorEl);
-    const id = open ? 'simple-popper' : undefined;
   
     const handleClickOpen = () => {
       setOpen(true);
@@ -176,6 +173,25 @@ export default function Home( {currentUser, pizzaCollection} ) {
     const handleClose = () => {
       setOpen(false);
     };
+
+    // Handles editing a custom order in confirmation window
+    const [open2, setOpen2] = React.useState(false);
+      
+    const handleClickOpen2 = () => {
+        setOpen2(true);
+    };
+      
+    const handleClose2 = () => {
+        setOpen2(false);
+    };
+
+    // Handles confirming the custom pizza in confirmation window
+    async function handleConfirmOrder(e){
+        e.preventDefault();
+        alert("Pizza Confirmed");
+        setOrderSubmit(!orderSubmit)
+        setClassicOrder(!classicOrder)
+    }
  
     return (
         // Entire home screen page, classic pizzas and order form/ confirmation window
@@ -316,8 +332,9 @@ export default function Home( {currentUser, pizzaCollection} ) {
                 <hr></hr>
 
                 {/* Confirmation window area */}
-                <div style={{textAlign: 'left', display: "grid", gridTemplateRows: "repeat(1, 120px"}}>
+                <div style={{textAlign: 'left', display: "grid", gridTemplateRows: "repeat(1, 90px"}}>
                     <h1 style={{color: "white", textAlign: "center"}}>Confirm Your Order:</h1>  
+
                     {/* Pizza 1 */}
                     {orderSubmit?
                     <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
@@ -326,11 +343,58 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         <h3>Size: {size}</h3>
                         <h3>Toppings: {sauce} / {cheese} / {topping1} / {topping2} / {topping3}</h3>
                         <h3>Price: ${price}</h3>
-                        <button onClick={deletePizzaOrder} style={{marginLeft: "20%"}}>Delete Order</button>
-                        <button style={{marginLeft: "10%"}}>Edit Order</button>
-                        <button style={{marginLeft: "10%"}}>Confirm Order</button>
+                        <Button onClick={deleteCustomPizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
+                        <Button onClick={handleClickOpen2} style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
+                        <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title" useref="entry-form">
+                        <DialogTitle id="form-dialog-title">Modify your order:</DialogTitle>
+                        {/* <form onSubmit={(e) => submitWorkoutForm(e)}> */}
+                        <DialogContent>
+                            <DialogContentText>
+                               <b>Feel free to change your size or topping selections below!</b>
+                            </DialogContentText>
+                            <br></br>
+                            <DialogContentText>
+                               <b style={{fontSize: "20px"}}>Size</b>:
+                            </DialogContentText>
+                            <TextField
+                            name="size"
+                            margin="dense"
+                            value={size}
+                            type="text"
+                            fullWidth
+                            onChange={(e) => setSize(e.target.value)}
+                            // value={formData.name}
+                            // onChange={handleFormChange}
+                            />
+                            <br></br>
+                            <br></br>
+                            <DialogContentText>
+                            <b style={{fontSize: "20px"}}>Toppings:</b>
+                            </DialogContentText>
+                            <TextField
+                            autoFocus
+                            name="date"
+                            margin="dense"
+                            value={customToppings}
+                            type="text"
+                            fullWidth
+                            // onChange={}
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose2} color="primary">
+                                Cancel
+                            </Button>
+                            <Button onClick={handleClose2} type="submit" color="primary">
+                                Submit
+                            </Button>
+                        </DialogActions>
+                        {/* </form> */}
+                        </Dialog>
                     </div> : null}
-                    {/* Pizza 2 */}
+
+
+                    {/* Classic Pizza Order */}
                     {classicOrder? 
                     <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
                         <h2>Summary</h2>
@@ -338,7 +402,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         <h3>Size: Medium</h3>
                         <h3>Toppings: {classicToppings}</h3>
                         <h3>Price: ${classicPrice}</h3>
-                        <Button onClick={deletePizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
+                        <Button onClick={deleteClassicPizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
                         <Button onClick={handleClickOpen} style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" useref="entry-form">
                         <DialogTitle id="form-dialog-title">Modify your order:</DialogTitle>
@@ -349,7 +413,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                             </DialogContentText>
                             <br></br>
                             <DialogContentText>
-                               Size (<em>custom pizzas are Medium only</em>) :
+                               <b style={{fontSize: "20px"}}>Size</b> (<em>custom pizzas are Medium only</em>) :
                             </DialogContentText>
                             <TextField
                             name="size"
@@ -360,26 +424,20 @@ export default function Home( {currentUser, pizzaCollection} ) {
                             // value={formData.name}
                             // onChange={handleFormChange}
                             />
+                            <br></br>
+                            <br></br>
+                            <DialogContentText>
+                            <b style={{fontSize: "20px"}}>Toppings:</b>
+                            </DialogContentText>
                             <TextField
                             autoFocus
                             name="date"
                             margin="dense"
-                            label="When You Completed"
+                            value={classicToppings}
                             type="text"
                             fullWidth
-                            // value={formData.duration}
-                            // onChange={handleFormChange}
+                            onChange={(e) => setClassicToppings(e.target.value)}
                             />
-                            {/* <TextField
-                            autoFocus
-                            name="difficulty"
-                            margin="dense"
-                            label="Difficulty"
-                            type="text"
-                            fullWidth
-                            // value={formData.difficulty}
-                            onChange={handleFormChange} */}
-                            {/* /> */}
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose} color="primary">
@@ -391,10 +449,12 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         </DialogActions>
                         {/* </form> */}
                         </Dialog>
-                        <Button style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "green"}} size="small">Confirm Order</Button>
                     </div> : null}
                 </div>
-
+                {classicOrder || orderSubmit ? 
+                 <Button onClick={handleConfirmOrder}style={{border: "2px solid black", backgroundColor: "green", marginTop: "10px"}} size="small">
+                    <NavLink to="/orders">Confirm Order</NavLink>
+                </Button> :null}
             </div>
         </div>
     )

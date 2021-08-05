@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useRef } from "react"
 
@@ -30,9 +31,10 @@ export default function Orders( {currentUser}) {
 //         return Status
 //    }
 
+
     return (
         <div style={{textAlign: 'center'}}>
-                <h1 style={{color: "white", fontSize: "50px"}}>Your Order</h1> 
+                <h1 style={{color: "white", fontSize: "50px"}}>{currentUser.username}, here is your order!</h1> 
         <div className="userOrder">
                 <h3 style={{fontSize: "30px"}}>Username:</h3>
                 <h3 style={{fontSize: "30px"}}>Address:</h3>
