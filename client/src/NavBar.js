@@ -2,12 +2,13 @@ import React from 'react'
 import { Navbar } from "./styled";
 import {NavLink} from "react-router-dom"
 
-function NavBar() {
+function NavBar( { currentUser } ) {
     return (
         <div style={{backgroundColor: "#992b1d", textAlign: "center"}}>
         <h1 className="Title"style={{color: "#262626", margin: "0px"}}>West Coast Slice</h1>
         <Navbar>
-            <NavLink
+            <h4 style={{color: "white"}}>Logged in as: {currentUser.username}</h4>
+            {/* <NavLink
                 exact
                 activeClassName="active"
                 to="/login"
@@ -18,7 +19,7 @@ function NavBar() {
                 activeClassName="active"
                 to="/signup"
                 >Signup
-            </NavLink>
+            </NavLink> */}
             <NavLink
                 exact
                 activeClassName="active"

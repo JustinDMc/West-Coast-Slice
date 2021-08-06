@@ -1,52 +1,42 @@
-
-import React from 'react'
-import { useRef } from "react"
+import React, { useState } from 'react'
 
 export default function Orders( {currentUser}) {
-    // Handles the timer for the order status
 
+    const [seconds, setSeconds] = useState(10)
 
+    const [pending, setPending] = useState(<b style={{color: "red"}}>Pending</b>)
+    const [delivered, setDelivered] = useState(<b style={{color: "black"}}>Delivered</b>)
 
-// ----------------------------- Something I tried ---------------------------------
-        // const [status, setStatus] = useState("Cooking in progress.... (15min)")
-        // const statusTimer = useRef("Cooking in progress.... (15min)");
-        // statusTimer.current = "Cooking in progress.... (15min)";
-
-        // const getstatusTimeout = () => {
-        //     setTimeout(() => {
-        //         setTimer(statusTimer.current);
-        //     }, 3000);
-        // };
-        
-        // const onTimerLoad = () => {
-        //     statusTimer.current.focus();
-        // }
-    
-// ----------------------------- Something I tried ---------------------------------
-//     const [status, setStatus] = useState("Cooking in progress.... (15min)")
-
-//    function orderTimer(e) {
-//         e.preventDefault();
-//         const Status = setTimeout(() => console.log("You Order is ready"), 1000)
-//         return Status
-//    }
-
+    function timer(){
+        setSeconds(seconds -1)
+        if (seconds === 1) {
+            setPending(<b style={{color: "black"}}>Pending</b>)
+            setDelivered(<b style={{color: "green"}}>Delivered</b>)
+            setSeconds(0)
+        }
+    }
 
     return (
-        <div style={{textAlign: 'center'}}>
-                <h1 style={{color: "white", fontSize: "50px"}}>{currentUser.username}Here is your order!</h1> 
-        <div className="userOrder">
-                <h3 style={{fontSize: "30px"}}>Username:</h3>
-                <h3 style={{fontSize: "30px"}}>Address:</h3>
-                <br></br>
-                <br></br>
-                <br></br>
-                <h3 style={{textDecoration: 'underline', fontSize: "30px"}}>Summary:</h3>
-                <p style={{fontWeight: "bold", fontSize: "30px"}}>Pizza(s) you have ordered:</p>
-                <p style={{fontWeight: "bold", fontSize: "30px"}}>Total amount:</p>
-                <p style={{fontWeight: "bold", fontSize: "30px"}}>
-                    How long until ready:
-                    </p>
+        <div style={{justifyContent: "center", textAlign: 'center', border: "5px solid black", backgroundColor: "rgba(255,255,255,0.4)", color: "black", marginLeft: "200px", marginRight: "200px"}}>
+            <div>
+                <h1 style={{fontSize: "50px"}}>Order Confirmation</h1> 
+                <h3 style={{fontSize: "25px"}}>West Coast Slice - Headband Street <br></br> 789 Headband Street, Los Angeles, CA <br></br> (111)-222-3456 </h3>
+                <h5 style={{fontSize: "20px"}}>-- We hope you enjoy your pizza! --</h5>
+                <h6 style={{fontSize: "15px"}}>The order below has been confirmed, please phone the restaurant to change or cancel your order.</h6>
+                <h5 style={{fontSize: "20px"}}>Delivery Status: {pending} || {delivered}</h5>
+            </div>
+            <div className="userOrder">
+                <hr style={{borderTop: "1px dashed red"}}></hr>
+                <p style={{fontWeight: "bold", fontSize: "20px", textAlign: "left"}}>1 X-Large Custom Pizza $18</p>
+                <p style={{fontSize: "18px", textAlign: "left"}}><em>Marinara, Mozarella, Pepperoni, Pineapple, Ranch</em></p>
+                <p style={{fontSize: "18px", textAlign: "left"}}><em>Notes: Light ranch please!</em></p>
+                <p style={{fontWeight: "bold", fontSize: "20px", textAlign: "left"}}>1 Medium Chicken Pesto Pizza <b style={{textAlign: "right"}}>$12</b></p>
+                <p style={{fontSize: "18px", textAlign: "left"}}><em>Pesto, Parmesan, Grilled Chicken, Tomato, Artichoke Hearts, Capers, Sri-Rancha</em></p>
+                <p style={{fontWeight: "bold", fontSize: "30px", textAlign: "left"}}>Total: $30</p>
+                <hr style={{borderTop: "1px dashed red"}}></hr>
+                {seconds >= 1 ?                 
+                <p onload={setTimeout(timer, 1000)} style={{fontWeight: "bold", fontSize: "30px"}}>How long until ready: 0 minutes: {seconds} seconds</p> 
+                : null}
             </div>
         </div>
     )

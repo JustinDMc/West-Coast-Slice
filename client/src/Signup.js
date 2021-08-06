@@ -37,6 +37,7 @@ const Signup = ( {setCurrentUser } ) => {
 
     return (
         <div style={{textAlign: 'center'}}>
+            <h1 className="Title"style={{backgroundColor: "rgba(153, 43, 29, 0.8)", color: "#262626", margin: "0px"}}>West Coast Slice</h1>
             <form onSubmit={handleSubmit} style={{backgroundColor: "white", border: '1px solid black', borderRadius: "8px", padding: "8px", width: "300px", padding: "8px", margin: "auto", marginTop: "250px"}}>
             <h1 style={{color: "#cf3f0a"}}>West Coast Slice!</h1>
                 <h2>Sign up</h2>
@@ -63,6 +64,7 @@ const Signup = ( {setCurrentUser } ) => {
                     value={home_address} 
                     onChange={(e) => setHomeAddress(e.target.value)}/>
                 <br></br>
+                
                 <br></br>
                 <br></br>
                 <Button variant="contained" submit type="submit" value="Sign Up" style={{color: "black", fontWeight: "bold"}}>Sign Up</Button>

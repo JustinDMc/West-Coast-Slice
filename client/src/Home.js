@@ -126,6 +126,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
     const [topping1, setTopping1] = useState("")
     const [topping2, setTopping2] = useState("")
     const [topping3, setTopping3] = useState("")
+    const [notes, setNotes] = useState("")
     const [classicToppings, setClassicToppings] = useState("")
     const [price, setPrice] = useState("")
     const [classicPrice, setClassicPrice] = useState("")
@@ -137,13 +138,13 @@ export default function Home( {currentUser, pizzaCollection} ) {
         e.preventDefault();
         setName("Custom")
         if(size == "Small"){
-            setPrice(8)
-        } else if(size == "Medium") {
             setPrice(10)
-        } else if(size == "Large"){
+        } else if(size == "Medium") {
             setPrice(12)
+        } else if(size == "Large"){
+            setPrice(15)
         } else {
-            setPrice(14)
+            setPrice(18)
         }
         setOrderSubmit(!orderSubmit)
     }
@@ -188,7 +189,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
     // Handles confirming the custom pizza in confirmation window
     async function handleConfirmOrder(e){
         e.preventDefault();
-        alert("Pizza Confirmed");
+        alert("Order Confirmed");
         setOrderSubmit(!orderSubmit)
         setClassicOrder(!classicOrder)
     }
@@ -200,7 +201,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             {/* Left side of home page, where all pizzas are rendered */}
 
-            <div className="pizzaContainer" style={{flex: "65%", textAlign: 'center' ,display: "grid", gridTemplateColumns: "repeat(3, 242px)", gridRowGap: "24px", justifyContent: "space-around", alignItems: "center", width: "100%", margin: "auto"}}>
+            <div className="pizzaContainer" style={{flex: "65%", textAlign: 'center' ,display: "grid", gridTemplateColumns: "repeat(3, 250px)", gridRowGap: "24px", justifyContent: "space-around", alignItems: "center", width: "100%", margin: "auto", borderRight: '6px solid black'}}>
 
                 {/* Where we map through backend pizzas and create a div with an img, name, toppings, size and price for each one */}
                 {pizzaCollection.map(pizza => 
@@ -208,22 +209,22 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         <img src={pizza.img_url} style={{maxLength: "100px", maxHeight: "100px"}}/>
                         <h2 style={{backgroundColor: "#262626", color: "white"}}>{pizza.name}</h2>
                         <hr></hr>
-                        <p>{pizza.toppings.map(topping => topping.name).join(" / ")}</p>
+                        <p><b>{pizza.toppings.map(topping => topping.name).join(" / ")}</b></p>
                         <hr></hr>
                         <h5>{pizza.size}</h5>
                         <hr></hr>
-                        <h3 style={{paddingBottom: "5px"}}>${pizza.price}</h3>
-                        <Button name={pizza.name} value={pizza.price} id={pizza.toppings.map(topping => topping.name).join(" / ")}onClick={orderClassic} variant="contained" style={{color: "black", fontWeight: "bold", width: "160px", position: "relative", bottom: "0"}}>Order</Button>
+                        <h3>${pizza.price}</h3>
+                        <button style={{backgroundColor: "#262626", color: "white", width: "100px", borderRadius: "8px"}}name={pizza.name} value={pizza.price} id={pizza.toppings.map(topping => topping.name).join(" / ")}onClick={orderClassic}>Order</button>
                     </div>
                     )}
             </div>
 
             {/* Right side of home page, order form and confirmation window */}
 
-            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', borderLeft: '6px solid black'}}>
+            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', marginLeft: "50px", marginRight: "50px"}}>
                 <h1 style={{color: "white"}}>Make your own!</h1>
                 <h3 style={{color: "white"}}><em>--3 topping maximum--</em></h3>
-                <h5 style={{color: "white"}}><em>Small $8, Medium $10, Large $12, X-Large $14</em></h5>
+                <h5 style={{color: "white"}}><em>Small $10, Medium $12, Large $15, X-Large $18</em></h5>
 
                 {/* Entire pizza form (upper right side) that on "submit" will get sent to Orders */}
                 <form onSubmit={handleSubmit} style={{}}>
@@ -321,7 +322,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <br></br>
 
                     {/* Add a note area */}
-                    <input type="text" placeholder="Notes..."></input>
+                    <input onChange={(e) => setNotes(e.target.value)}type="text" placeholder="Notes..."></input>
                     <br></br>
                     <br></br>
 
@@ -335,16 +336,16 @@ export default function Home( {currentUser, pizzaCollection} ) {
                 <div style={{textAlign: 'left', display: "grid", gridTemplateRows: "repeat(1, 90px"}}>
                     <h1 style={{color: "white", textAlign: "center"}}>Confirm Your Order:</h1>  
 
-                    {/* Pizza 1 */}
+                    {/* Custom Order */}
                     {orderSubmit?
-                    <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
-                        <h2>Summary</h2>
+                    <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "rgba(255,255,255,0.4)", borderRadius: "12px"}}>
                         <h3>Name: {name}</h3>
                         <h3>Size: {size}</h3>
                         <h3>Toppings: {sauce} / {cheese} / {topping1} / {topping2} / {topping3}</h3>
+                        <h3>Notes: {notes}</h3>
                         <h3>Price: ${price}</h3>
-                        <Button onClick={deleteCustomPizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
-                        <Button onClick={handleClickOpen2} style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
+                        <Button onClick={deleteCustomPizzaOrder} style={{marginLeft: "23%", border: "2px solid black", backgroundColor: "red", color: "white", borderRadius: "8px", marginBottom: "5px"}} size="small">Delete Order</Button>
+                        <Button onClick={handleClickOpen2} style={{marginLeft: "20%", border: "2px solid black", backgroundColor: "#262626", color: "white", borderRadius: "8px", marginBottom: "5px"}} size="small">Edit Order</Button>
                         <Dialog open={open2} onClose={handleClose2} aria-labelledby="form-dialog-title" useref="entry-form">
                         <DialogTitle id="form-dialog-title">Modify your order:</DialogTitle>
                         {/* <form onSubmit={(e) => submitWorkoutForm(e)}> */}
@@ -393,17 +394,17 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         </Dialog>
                     </div> : null}
 
+                    <hr style={{borderTop: "1px dashed red"}}></hr>
 
                     {/* Classic Pizza Order */}
                     {classicOrder? 
-                    <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "white"}}>
-                        <h2>Summary</h2>
+                    <div style={{border: "2px solid black", marginLeft: "20px", marginRight: "20px", backgroundColor: "rgba(255,255,255,0.4)", borderRadius: "12px"}}>
                         <h3>Name: {classicName}</h3>
                         <h3>Size: Medium</h3>
                         <h3>Toppings: {classicToppings}</h3>
                         <h3>Price: ${classicPrice}</h3>
-                        <Button onClick={deleteClassicPizzaOrder} style={{marginLeft: "15%", border: "2px solid black", backgroundColor: "red"}} size="small">Delete Order</Button>
-                        <Button onClick={handleClickOpen} style={{marginLeft: "10%", border: "2px solid black", backgroundColor: "lightblue"}} size="small">Edit Order</Button>
+                        <Button onClick={deleteClassicPizzaOrder} style={{marginLeft: "23%", border: "2px solid black", backgroundColor: "red", color: "white", borderRadius: "8px", marginBottom: "5px"}} size="small">Delete Order</Button>
+                        <Button onClick={handleClickOpen} style={{marginLeft: "20%", border: "2px solid black", backgroundColor: "#262626", color: "white", borderRadius: "8px", marginBottom: "5px"}} size="small">Edit Order</Button>
                         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" useref="entry-form">
                         <DialogTitle id="form-dialog-title">Modify your order:</DialogTitle>
                         {/* <form onSubmit={(e) => submitWorkoutForm(e)}> */}
@@ -452,8 +453,8 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     </div> : null}
                 </div>
                 {classicOrder || orderSubmit ? 
-                 <Button onClick={handleConfirmOrder}style={{border: "2px solid black", backgroundColor: "green", marginTop: "10px"}} size="small">
-                    <NavLink to="/orders">Confirm Order</NavLink>
+                 <Button onClick={handleConfirmOrder}style={{border: "2px solid black", backgroundColor: "lightblue", marginTop: "10px", borderRadius: "8px", width: "280px"}} size="small">
+                    <NavLink to="/orders" style={{color: "black"}}>Confirm Order</NavLink>
                 </Button> :null}
             </div>
         </div>

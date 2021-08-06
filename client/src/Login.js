@@ -35,6 +35,7 @@ export default function Login({setCurrentUser}) {
 
     return (
         <div style={{textAlign: "center", margin: "auto"}}>
+            <h1 className="Title"style={{backgroundColor: "rgba(153, 43, 29, 0.8)", color: "#262626", margin: "0px"}}>West Coast Slice</h1>
             <form className="login-form" onSubmit={handleSubmit} style={{backgroundColor: "white", border: '1px solid black', borderRadius: "8px", padding: "8px", width: "300px", margin: "auto", marginTop: "250px"}}>
                 <h1 style={{color: "#992b1d"}}>West Coast Slice!</h1>
                 <h2 style={{color: "#262626"}}>Login</h2>

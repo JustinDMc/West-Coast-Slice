@@ -23,23 +23,21 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path ="/login">
-          <NavBar />
           <Login setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/signup">
-          <NavBar />
           <Signup setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path ="/home">
-          <NavBar />
+          <NavBar currentUser={currentUser}/>
           <Home currentUser={currentUser} pizzaCollection={pizzaCollection}/>
         </Route>
         <Route exact path ="/about">
-          <NavBar />
+          <NavBar currentUser={currentUser}/>
           <About />
         </Route>
         <Route exact path ="/orders">
-          <NavBar />
+          <NavBar currentUser={currentUser}/>
           <Orders currentUser={currentUser}/>
         </Route>
       </Switch>
