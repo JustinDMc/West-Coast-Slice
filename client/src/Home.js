@@ -9,6 +9,22 @@ import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {NavLink} from "react-router-dom"
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 120,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
 
 export default function Home( {currentUser, pizzaCollection} ) {
     // Where we set the state of all our toppings fetches
@@ -225,40 +241,44 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             <div className="pizza-form" style={{flex: "35%", textAlign: 'center', marginLeft: "50px", marginRight: "50px", backgroundColor: "#262626", border: "10px solid white"}}>
                 <h1 style={{color: "white", textDecoration: "underline"}}>Make your own!</h1>
+
                 <h3 style={{color: "white"}}><em>--3 topping maximum--</em></h3>
                 <h5 style={{color: "white"}}><em>Small $10, Medium $12, Large $15, X-Large $18</em></h5>
 
+                <hr style={{borderTop: "1px dashed red"}}></hr>
                 {/* Entire pizza form (upper right side) that on "submit" will get sent to Orders */}
                 <form onSubmit={handleSubmit} style={{}}>
 
                     {/* Size label/selection area */}
                     <label for="size" style={{color: "white", fontSize: "24px"}}>Size:   </label>
-                    <select name="size" id="size" form="customForm" onChange={(e) => setSize(e.target.value)}>
+                    <Select name="size" id="size" value={size}form="customForm" style={{backgroundColor: "white", padding: "2px"}} onChange={(e) => setSize(e.target.value)}>
                         <option value="Select-">Select-</option>
                         <option value="Small">Small</option>
                         <option value="Medium">Medium</option>
                         <option value="Large">Large</option>
                         <option value="X-Large">X-Large</option>
-                    </select>
+                    </Select>
 
                     <br></br>
                     <br></br>
 
-                    <label for="sauce" style={{color: "white", fontSize: "16px"}}>Sauce:   </label>
-                    <select name="sauce" id="sauce" form="customForm" onChange={(e) => setSauce(e.target.value)}>
+                    <label for="sauce" style={{color: "white", fontSize: "20px"}}>Sauce:   </label>
+                    <Select name="sauce" id="sauce" value={sauce} form="customForm" style={{backgroundColor: "white", padding: "2px"}} onChange={(e) => setSauce(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {sauceToppingCollection.map(sauce => 
-                        <option value={sauce.name}>{sauce.name}</option>)}
-                    </select>
+                            <option value={sauce.name}>{sauce.name}</option>)}
+                    </Select>
+
 
                     <br></br>
+                    <br></br>
 
-                    <label for="cheese" style={{color: "white", fontSize: "16px"}}>Cheese:   </label>
-                    <select name="cheese" id="cheese" form="customForm" onChange={(e) => setCheese(e.target.value)}>
+                    <label for="cheese" style={{color: "white", fontSize: "20px"}}>Cheese:   </label>
+                    <Select name="cheese" id="cheese" value={cheese} form="customForm" style={{backgroundColor: "white", padding: "2px"}} onChange={(e) => setCheese(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {cheeseToppingCollection.map(cheese => 
                             <option value={cheese.name}>{cheese.name}</option>)}
-                    </select>
+                    </Select>
 
                     {/* Area to select first topping */}
                     <h3 style={{color: "white"}}>Topping One:</h3>
@@ -269,7 +289,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <input type="radio" id="other1" name="first_topping" value="Other" onClick={toggleOtherSelect}></input>
                     <label for="other1" style={{color: "white"}}>Other</label>
                     <br></br>
-                    <select name="topping_one_selection" id="topping_one_selection" form="CustomForm" style={{width: "180px"}} onChange={(e) => setTopping1(e.target.value)}>
+                    <Select name="topping_one_selection" id="topping_one_selection" form="CustomForm" value={topping1} style={{width: "180px", backgroundColor: "white", marginTop: "2px"}} onChange={(e) => setTopping1(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {meatSelect ? meatToppingCollection.map(topping => 
                             <option value={topping.name}>{topping.name}</option>
@@ -278,7 +298,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                             <option value={topping.name}>{topping.name}</option>):null}
                         {otherSelect ? otherToppingCollection.map(topping => 
                             <option value={topping.name}>{topping.name}</option>):null}
-                    </select>
+                    </Select>
 
                     {/* Area to select second topping */}
                     <h3 style={{color: "white"}}>Topping Two:</h3>
@@ -289,7 +309,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <input type="radio" id="other2" name="first_topping" value="Other" onClick={toggleOtherSelect2}></input>
                     <label for="other2" style={{color: "white"}}>Other</label>
                     <br></br>
-                    <select name="topping_two_selection" id="topping_two_selection" form="CustomForm" style={{width: "180px"}} onChange={(e) => setTopping2(e.target.value)}>
+                    <Select name="topping_two_selection" id="topping_two_selection" form="CustomForm" value={topping2} style={{width: "180px", backgroundColor: "white", marginTop: "2px"}} onChange={(e) => setTopping2(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {meatSelect2 ? meatToppingCollection.map(topping => 
                             <option value={topping.name}>{topping.name}</option>
@@ -298,7 +318,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                             <option value={topping.name}>{topping.name}</option>):null}
                         {otherSelect2 ? otherToppingCollection.map(topping => 
                             <option value={topping.name}>{topping.name}</option>):null}
-                    </select>
+                    </Select>
 
                     {/* Area to select third topping */}
                     <h3 style={{color: "white"}}>Topping Three:</h3>
@@ -309,7 +329,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <input type="radio" id="other3" name="first_topping" value="Other" onClick={toggleOtherSelect3}></input>
                     <label for="other3" style={{color: "white"}}>Other</label>
                     <br></br>
-                    <select name="topping_three_selection" id="topping_three_selection" form="CustomForm" style={{width: "180px"}} onChange={(e) => setTopping3(e.target.value)}>
+                    <Select name="topping_three_selection" id="topping_three_selection" form="CustomForm" value={topping3} style={{width: "180px", backgroundColor: "white", marginTop: "2px"}} onChange={(e) => setTopping3(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {meatSelect3 ? meatToppingCollection.map(topping => 
                             <option value={topping.name}>{topping.name}</option>
@@ -318,11 +338,11 @@ export default function Home( {currentUser, pizzaCollection} ) {
                             <option value={topping.name}>{topping.name}</option>):null}
                         {otherSelect3 ? otherToppingCollection.map(topping => 
                             <option value={topping.name}>{topping.name}</option>):null}
-                    </select>
+                    </Select>
 
                     <br></br>
                     <br></br>
-
+                    <h3 style={{color: "white"}}>Notes:</h3>
                     {/* Add a note area */}
                     <input onChange={(e) => setNotes(e.target.value)}type="text" placeholder="Notes..."></input>
                     <br></br>
