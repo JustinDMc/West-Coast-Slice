@@ -6,6 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import {NavLink} from "react-router-dom"
 
 export default function Home( {currentUser, pizzaCollection} ) {
@@ -221,8 +223,8 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             {/* Right side of home page, order form and confirmation window */}
 
-            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', marginLeft: "50px", marginRight: "50px"}}>
-                <h1 style={{color: "white"}}>Make your own!</h1>
+            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', marginLeft: "50px", marginRight: "50px", backgroundColor: "#262626", border: "10px solid white"}}>
+                <h1 style={{color: "white", textDecoration: "underline"}}>Make your own!</h1>
                 <h3 style={{color: "white"}}><em>--3 topping maximum--</em></h3>
                 <h5 style={{color: "white"}}><em>Small $10, Medium $12, Large $15, X-Large $18</em></h5>
 
