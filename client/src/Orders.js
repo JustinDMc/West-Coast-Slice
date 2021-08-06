@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Orders( {currentUser}) {
 
-    const [seconds, setSeconds] = useState(10)
+    const [seconds, setSeconds] = useState(30)
 
     const [pending, setPending] = useState(<b style={{color: "red"}}>Pending</b>)
     const [delivered, setDelivered] = useState(<b style={{color: "black"}}>Delivered</b>)
@@ -35,7 +35,7 @@ export default function Orders( {currentUser}) {
                 <p style={{fontWeight: "bold", fontSize: "30px", textAlign: "left"}}>Total: $30</p>
                 <hr style={{borderTop: "1px dashed red"}}></hr>
                 {seconds >= 1 ?                 
-                <p onload={setTimeout(timer, 1000)} style={{fontWeight: "bold", fontSize: "30px"}}>How long until ready: 0 minutes: {seconds} seconds</p> 
+                <p onload={setTimeout(timer, 1000)} style={{fontWeight: "bold", fontSize: "30px"}}>Delivery in: 0 minutes: {seconds} seconds</p> 
                 : null}
             </div>
         </div>

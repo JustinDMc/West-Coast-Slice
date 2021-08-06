@@ -10,11 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {NavLink} from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+import Input from '@material-ui/core/Input';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -138,12 +134,12 @@ export default function Home( {currentUser, pizzaCollection} ) {
     // Handles tracking orders from classic pizzas and in pizza form, and handles conditional rendering on selections in custom order form
     const [name, setName] = useState("")
     const [classicName, setClassicName] = useState("")
-    const [size, setSize] = useState("")
-    const [sauce, setSauce] = useState("")
-    const [cheese, setCheese] = useState("")
-    const [topping1, setTopping1] = useState("")
-    const [topping2, setTopping2] = useState("")
-    const [topping3, setTopping3] = useState("")
+    const [size, setSize] = useState("Select-")
+    const [sauce, setSauce] = useState("Select-")
+    const [cheese, setCheese] = useState("Select-")
+    const [topping1, setTopping1] = useState("Select-")
+    const [topping2, setTopping2] = useState("Select-")
+    const [topping3, setTopping3] = useState("Select-")
     const [notes, setNotes] = useState("")
     const [classicToppings, setClassicToppings] = useState("")
     const [price, setPrice] = useState("")
@@ -251,7 +247,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
                     {/* Size label/selection area */}
                     <label for="size" style={{color: "white", fontSize: "24px"}}>Size:   </label>
-                    <Select name="size" id="size" value={size}form="customForm" style={{backgroundColor: "white", padding: "2px"}} onChange={(e) => setSize(e.target.value)}>
+                    <Select name="size" id="size" value={size} form="customForm" style={{backgroundColor: "white", padding: "2px"}} onChange={(e) => setSize(e.target.value)}>
                         <option value="Select-">Select-</option>
                         <option value="Small">Small</option>
                         <option value="Medium">Medium</option>
@@ -344,12 +340,12 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <br></br>
                     <h3 style={{color: "white"}}>Notes:</h3>
                     {/* Add a note area */}
-                    <input onChange={(e) => setNotes(e.target.value)}type="text" placeholder="Notes..."></input>
+                    <Input style={{backgroundColor: "white"}}onChange={(e) => setNotes(e.target.value)}type="text" placeholder="Notes..."></Input>
                     <br></br>
                     <br></br>
 
                     {/* Submit your order button */}
-                    <input submit type="submit" value="Order"></input>
+                    <input style={{width: "100px", borderRadius: "8px"}} submit type="submit" value="Order"></input>
                 </form>
 
                 <hr></hr>
