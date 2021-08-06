@@ -248,7 +248,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <select name="sauce" id="sauce" form="customForm" onChange={(e) => setSauce(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {sauceToppingCollection.map(sauce => 
-                            <option value={sauce.name}>{sauce.name}</option>)}
+                        <option value={sauce.name}>{sauce.name}</option>)}
                     </select>
 
                     <br></br>
