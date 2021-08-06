@@ -200,11 +200,11 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             {/* Left side of home page, where all pizzas are rendered */}
 
-            <div className="pizzaContainer" style={{flex: "65%", textAlign: 'center' ,display: "grid", gridTemplateColumns: "repeat(3, 250px)", gridRowGap: "24px", justifyContent: "space-around", alignItems: "center", width: "100%", margin: "auto"}}>
+            <div className="pizzaContainer" style={{flex: "65%", textAlign: 'center' ,display: "grid", gridTemplateColumns: "repeat(3, 242px)", gridRowGap: "24px", justifyContent: "space-around", alignItems: "center", width: "100%", margin: "auto"}}>
 
                 {/* Where we map through backend pizzas and create a div with an img, name, toppings, size and price for each one */}
                 {pizzaCollection.map(pizza => 
-                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "rgba(153, 43, 29, 0.8)", minHeight: "442px"}}>
+                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", backgroundColor: "rgba(153, 43, 29, 0.8)", height: "462px"}}>
                         <img src={pizza.img_url} style={{maxLength: "100px", maxHeight: "100px"}}/>
                         <h2 style={{backgroundColor: "#262626", color: "white"}}>{pizza.name}</h2>
                         <hr></hr>
@@ -212,8 +212,8 @@ export default function Home( {currentUser, pizzaCollection} ) {
                         <hr></hr>
                         <h5>{pizza.size}</h5>
                         <hr></hr>
-                        <h3>${pizza.price}</h3>
-                        <button name={pizza.name} value={pizza.price} id={pizza.toppings.map(topping => topping.name).join(" / ")}onClick={orderClassic}>Order</button>
+                        <h3 style={{paddingBottom: "5px"}}>${pizza.price}</h3>
+                        <Button name={pizza.name} value={pizza.price} id={pizza.toppings.map(topping => topping.name).join(" / ")}onClick={orderClassic} variant="contained" style={{color: "black", fontWeight: "bold", width: "160px", position: "relative", bottom: "0"}}>Order</Button>
                     </div>
                     )}
             </div>
@@ -459,3 +459,6 @@ export default function Home( {currentUser, pizzaCollection} ) {
         </div>
     )
 }
+
+
+{/* <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "rgba(153, 43, 29, 0.8)", minHeight: "442px"}}></div> */}

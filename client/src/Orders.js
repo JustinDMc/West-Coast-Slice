@@ -34,7 +34,7 @@ export default function Orders( {currentUser}) {
 
     return (
         <div style={{textAlign: 'center'}}>
-                <h1 style={{color: "white", fontSize: "50px"}}>{currentUser.username}, here is your order!</h1> 
+                <h1 style={{color: "white", fontSize: "50px"}}>{currentUser.username}Here is your order!</h1> 
         <div className="userOrder">
                 <h3 style={{fontSize: "30px"}}>Username:</h3>
                 <h3 style={{fontSize: "30px"}}>Address:</h3>
