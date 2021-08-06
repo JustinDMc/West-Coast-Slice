@@ -6,6 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import {NavLink} from "react-router-dom"
 
 export default function Home( {currentUser, pizzaCollection} ) {
@@ -205,7 +207,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
                 {/* Where we map through backend pizzas and create a div with an img, name, toppings, size and price for each one */}
                 {pizzaCollection.map(pizza => 
-                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "rgba(153, 43, 29, 0.8)", minHeight: "442px"}}>
+                    <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", backgroundColor: "rgba(153, 43, 29, 0.8)", height: "462px"}}>
                         <img src={pizza.img_url} style={{maxLength: "100px", maxHeight: "100px"}}/>
                         <h2 style={{backgroundColor: "#262626", color: "white"}}>{pizza.name}</h2>
                         <hr></hr>
@@ -221,8 +223,8 @@ export default function Home( {currentUser, pizzaCollection} ) {
 
             {/* Right side of home page, order form and confirmation window */}
 
-            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', marginLeft: "50px", marginRight: "50px"}}>
-                <h1 style={{color: "white"}}>Make your own!</h1>
+            <div className="pizza-form" style={{flex: "35%", textAlign: 'center', marginLeft: "50px", marginRight: "50px", backgroundColor: "#262626", border: "10px solid white"}}>
+                <h1 style={{color: "white", textDecoration: "underline"}}>Make your own!</h1>
                 <h3 style={{color: "white"}}><em>--3 topping maximum--</em></h3>
                 <h5 style={{color: "white"}}><em>Small $10, Medium $12, Large $15, X-Large $18</em></h5>
 
@@ -246,7 +248,7 @@ export default function Home( {currentUser, pizzaCollection} ) {
                     <select name="sauce" id="sauce" form="customForm" onChange={(e) => setSauce(e.target.value)}>
                         <option value="Select-">Select-</option>
                         {sauceToppingCollection.map(sauce => 
-                            <option value={sauce.name}>{sauce.name}</option>)}
+                        <option value={sauce.name}>{sauce.name}</option>)}
                     </select>
 
                     <br></br>
@@ -460,3 +462,6 @@ export default function Home( {currentUser, pizzaCollection} ) {
         </div>
     )
 }
+
+
+{/* <div key={pizza.id} style={{textAlign: 'center', border: "3px solid black",  padding: "6px", borderRadius: "8px", margin: "auto", backgroundColor: "rgba(153, 43, 29, 0.8)", minHeight: "442px"}}></div> */}
