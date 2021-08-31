@@ -12,11 +12,25 @@ function App() {
   const [pizzaCollection, setPizzaCollection] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
 
+  // const [shazamCollection, setShazamCollection] = useState([]);
+
   useEffect(() => {
     fetch(`/pizzas`)
     .then(res => res.json())
     .then(pizzaData => setPizzaCollection(pizzaData))
   }, [])
+
+  // useEffect(() => {
+  //   fetch("https://shazam.p.rapidapi.com/songs/get-details?key=40333608&locale=en-US", {
+  //     "method": "GET",
+  //     "headers": {
+  //       "x-rapidapi-key": "7a9f4a66d1msh228fce086544fb4p1a004ejsn093be23161c0",
+  //       "x-rapidapi-host": "shazam.p.rapidapi.com"
+  //     }
+  //   })
+  //   .then(res => res.json())
+  //   .then(response => {console.log(response)})
+  // }, [])
 
 
   return (

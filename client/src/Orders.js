@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Orders( {currentUser}) {
 
-    const [seconds, setSeconds] = useState(30)
+    const [seconds, setSeconds] = useState(25)
 
     const [pending, setPending] = useState(<b style={{color: "red"}}>Pending</b>)
     const [delivered, setDelivered] = useState(<b style={{color: "black"}}>Delivered</b>)

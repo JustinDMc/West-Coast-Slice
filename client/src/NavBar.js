@@ -25,8 +25,8 @@ function NavBar( { currentUser } ) {
                 activeClassName="active"
                 to="/about"
                 >About
-                </NavLink>
-                <NavLink
+            </NavLink>
+            <NavLink
                 exact
                 activeClassName="active"
                 to="/home"
